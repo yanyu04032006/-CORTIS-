@@ -9,6 +9,7 @@ permissions:
   pages: write
   id-token: write
 
+# 控制同時間只有一個部署任務，避免重複浪費資源
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -23,11 +24,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'npm'
+          node-version: 22   
+          cache: 'npm'      
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install    
 
       - name: Build project
         run: npm run build
@@ -35,14 +36,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./workflows       
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }} 
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
