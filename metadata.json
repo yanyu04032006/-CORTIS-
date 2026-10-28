@@ -1,0 +1,6 @@
+{
+  "name": "CORTIS 命定偶像心理測驗",
+  "description": "猜猜你的 CORTIS 擔是誰？粉紅色街頭可愛風命定偶像心理測驗，測出與你靈魂契合的本命成員，獲得專屬雷射小卡與默契分析！",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
